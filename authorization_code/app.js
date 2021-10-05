@@ -12,7 +12,7 @@ var request = require('request'); // "Request" library
 var cors = require('cors');
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
-var dotenv = require('dotenv').config();
+require('dotenv').config();
 
 var client_id = process.env.CLIENT_ID; // Your client id
 var client_secret = process.env.CLIENT_SECRET; // Your secret
@@ -45,6 +45,7 @@ app.get('/login', function(req, res) {
 
   var state = generateRandomString(16);
   res.cookie(stateKey, state);
+  console.log(client_id);
 
   // your application requests authorization
   var scope = 'user-read-private user-read-email';
